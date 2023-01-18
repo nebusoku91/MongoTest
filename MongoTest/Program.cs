@@ -64,7 +64,7 @@ namespace MongoTest
             var gamesCollection = database.GetCollection<BsonDocument>("Games");
 
             Console.WriteLine("\n= List Games =");
-            Console.WriteLine("1. All games\n2. Action games\n3. Roleplaying Games\n4. Strategy games\n5. Return");
+            Console.WriteLine("1. All games\n2. Action Games\n3. Roleplaying Games\n4. Strategy games\n5. Adventure Games\n6. Return");
             Console.Write("> ");
 
 
@@ -100,6 +100,13 @@ namespace MongoTest
                             Console.WriteLine(stratgame);
                         break;
                     case 5:
+                        Console.WriteLine("\nListing all Strategy games: ");
+                        var adventgamesFilter = Builders<BsonDocument>.Filter.Eq("genre", "Adventure");
+                        var adventgames = gamesCollection.Find(adventgamesFilter).ToList();
+                        foreach (var adventgame in adventgames)
+                            Console.WriteLine(adventgame);
+                        break;
+                    case 6:
                         Start();
                         break;
                     default:
