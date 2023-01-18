@@ -234,14 +234,10 @@ namespace MongoTest
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", new ObjectId(gameID));
                 var doc = gamesCollection.Find(filter).FirstOrDefault();
 
-                if (doc == null)
-                {
-                    Console.WriteLine("Could not find game with that ID.");
-                    return;
-                }
-                else
-                {
-                    Console.WriteLine($"Updating game {doc["name"].AsString}.");
+                
+                    
+                
+                    Console.WriteLine($"Updating game \"{doc["name"].AsString}.\"");
                     Console.WriteLine("What do you want to change?");
                     Console.Write("1. Title\n2. Genre\n3. Price\n4. Quantity\n>");
 
@@ -259,7 +255,7 @@ namespace MongoTest
                                 {
                                     var update = Builders<BsonDocument>.Update.Set("name", newName);
                                     gamesCollection.FindOneAndUpdate(filter, update);
-                                    Console.WriteLine($"Game title successfully changed from \"{oldName}\" to \"{newName}\"\n");
+                                    Console.WriteLine($"Game title successfully changed from \"{oldName}\" to \"{newName}\".\n");
                                 }
                                 else
                                 {
@@ -293,7 +289,7 @@ namespace MongoTest
                                 {
                                     var update = Builders<BsonDocument>.Update.Set("price", newPrice);
                                     gamesCollection.FindOneAndUpdate(filter, update);
-                                    Console.WriteLine($"Game price successfully changed from \"{oldPrice}\" to \"{newPrice}\"\n");
+                                    Console.WriteLine($"Game price successfully changed from \"{oldPrice}\" to \"{newPrice}\".\n");
                                 }
                                 else
                                 {
@@ -310,7 +306,7 @@ namespace MongoTest
                                 {
                                     var update = Builders<BsonDocument>.Update.Set("quantity", newQuantity);
                                     gamesCollection.FindOneAndUpdate(filter, update);
-                                    Console.WriteLine($"Game quantity successfully changed from \"{oldQuantity}\" to \"{newQuantity}\"\n");
+                                    Console.WriteLine($"Game quantity successfully changed from \"{oldQuantity}\" to \"{newQuantity}\".\n");
                                 }
                                 else
                                 {
@@ -326,10 +322,11 @@ namespace MongoTest
                     {
                         Console.WriteLine("Invalid input. Please try again.");
                     }
-                }
+                
             }
             catch (Exception ex)
             {
+                Console.WriteLine("Could not find game with that ID.");
                 Console.WriteLine(ex);
                 Start();
             }
