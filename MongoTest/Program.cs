@@ -100,7 +100,7 @@ namespace MongoTest
                             Console.WriteLine(stratgame);
                         break;
                     case 5:
-                        Console.WriteLine("\nListing all Strategy games: ");
+                        Console.WriteLine("\nListing all Adventure games: ");
                         var adventgamesFilter = Builders<BsonDocument>.Filter.Eq("genre", "Adventure");
                         var adventgames = gamesCollection.Find(adventgamesFilter).ToList();
                         foreach (var adventgame in adventgames)
