@@ -244,7 +244,7 @@ namespace MongoTest
                 
                     
                 
-                    Console.WriteLine($"Updating game \"{doc["name"].AsString}.\"");
+                    Console.WriteLine($"Updating game \"{doc["name"].AsString}\".");
                     Console.WriteLine("What do you want to change?");
                     Console.Write("1. Title\n2. Genre\n3. Price\n4. Quantity\n>");
 
